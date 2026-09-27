@@ -1,0 +1,268 @@
+{
+  "common": {
+    "brand": "YOTTABYTE",
+    "brandFull": "Yottabyte",
+    "tagline": "Web development studio",
+    "whatsapp": "WhatsApp",
+    "consultation": "Free Consultation",
+    "skipToContent": "Skip to main content",
+    "included": "Included",
+    "notIncluded": "Not included"
+  },
+  "nav": {
+    "ariaMain": "Main navigation",
+    "ariaMobile": "Mobile navigation",
+    "ariaFooter": "Footer navigation",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "items": {
+      "services": "Services",
+      "work": "Work",
+      "process": "Process",
+      "pricing": "Pricing"
+    }
+  },
+  "hero": {
+    "slogan": "Web Development Studio",
+    "titleLine1": "Built Sharp.",
+    "titleLine2": "Built Fast.",
+    "titleLine3": "Built to Convert.",
+    "subtitle": "A website that does more than look good. Yottabyte builds websites that are fast, clear, and built around your business goals.",
+    "primaryCta": "Free Consultation",
+    "secondaryCta": "See Packages",
+    "imageAlt": "Editorial illustration of a browser being assembled from a modular grid with a cursor and a launch arrow"
+  },
+  "stats": {
+    "ariaLabel": "Yottabyte experience",
+    "items": {
+      "years": {
+        "value": "5+",
+        "label": "Years",
+        "description": "Building for the Web"
+      },
+      "projects": {
+        "value": "10+",
+        "label": "Projects",
+        "description": "Delivered"
+      },
+      "services": {
+        "value": "3",
+        "label": "Services",
+        "description": "Built for Business"
+      }
+    }
+  },
+  "services": {
+    "title": "What We Build",
+    "description": "From a simple campaign to a business website that keeps growing.",
+    "items": {
+      "landingPage": {
+        "title": "Landing Page",
+        "description": "A focused page that introduces your product, business, or campaign and drives visitors toward one clear action.",
+        "suitableFor": "Campaign, product, event, personal brand, lead generation",
+        "ctaLabel": "See Pricing"
+      },
+      "companyProfile": {
+        "title": "Company Profile",
+        "description": "A multi-page business website with a CMS, so content can be managed without touching any code.",
+        "suitableFor": "Small businesses, companies, studios, and professional firms",
+        "ctaLabel": "See Pricing"
+      },
+      "customWebsite": {
+        "title": "Custom Website",
+        "description": "A website built beyond templates: features that follow your business flow, third-party integrations, or more complex systems.",
+        "suitableFor": "Booking system, internal dashboard, web app, niche marketplace",
+        "ctaLabel": "Discuss Your Project",
+        "pricing": "Custom Project"
+      }
+    }
+  },
+  "work": {
+    "title": "Selected Work",
+    "description": "Completed projects will appear here once we have permission to publish them.",
+    "decoration": "WORK",
+    "eyebrow": "Portfolio in curation",
+    "placeholderTitle": "Real projects coming soon.",
+    "placeholderDescription": "Case studies will be published once the assets and client approvals are ready."
+  },
+  "process": {
+    "title": "From Idea to Launch.",
+    "description": "Four simple stages. You always know what is being worked on and why.",
+    "counter": "{current} / {total}",
+    "outputsAriaLabel": "{title} outputs",
+    "steps": {
+      "discover": {
+        "number": "01",
+        "title": "Discover",
+        "description": "We start by understanding your business, your audience, the goal of the website, and the action it should drive.",
+        "outputs": {
+          "requirements": "Requirements",
+          "goals": "Goals",
+          "contentDirection": "Content direction",
+          "projectScope": "Project scope"
+        }
+      },
+      "planDesign": {
+        "number": "02",
+        "title": "Plan & Design",
+        "description": "Page structure, hierarchy, user flow, and visual direction take shape before development starts.",
+        "outputs": {
+          "informationArchitecture": "Information architecture",
+          "uiDirection": "UI direction",
+          "responsivePlanning": "Responsive planning"
+        }
+      },
+      "buildIterate": {
+        "number": "03",
+        "title": "Build & Iterate",
+        "description": "The design is then built into a production-ready website and reviewed step by step.",
+        "outputs": {
+          "development": "Development",
+          "responsiveImplementation": "Responsive implementation",
+          "revision": "Revision",
+          "performance": "Performance"
+        }
+      },
+      "launchSupport": {
+        "number": "04",
+        "title": "Launch & Support",
+        "description": "Once QA is done, the website goes live and enters its post-launch support period.",
+        "outputs": {
+          "qa": "QA",
+          "deployment": "Deployment",
+          "handover": "Handover",
+          "bugWarranty": "Bug warranty"
+        }
+      }
+    }
+  },
+  "pricing": {
+    "title": "Simple Packages. No Guesswork.",
+    "description": "From simple needs to a business website that is ready to grow.",
+    "tabsAriaLabel": "Choose a website type",
+    "mostPopular": "Most Popular",
+    "selectPackage": "Choose {name}",
+    "categories": {
+      "landingPage": "Landing Page",
+      "companyProfile": "Company Profile"
+    },
+    "packages": {
+      "silver": "Silver",
+      "gold": "Gold",
+      "platinum": "Platinum"
+    },
+    "prices": {
+      "landingPageSilver": "Rp1M",
+      "landingPageGold": "Rp2M",
+      "landingPagePlatinum": "Rp3M",
+      "companyProfileSilver": "Rp2M",
+      "companyProfileGold": "Rp3.5M",
+      "companyProfilePlatinum": "Rp5M"
+    },
+    "features": {
+      "sectionCount": "Number of Sections",
+      "pageCount": "Number of Pages",
+      "cms": "CMS / Content Management",
+      "responsive": "Mobile & Desktop Responsive",
+      "whatsappCta": "WhatsApp CTA",
+      "googleMaps": "Google Maps",
+      "basicSeo": "Basic SEO",
+      "socialMediaLink": "Social Media Link",
+      "galleryTestimonial": "Gallery / Testimonial",
+      "contactForm": "Contact / Inquiry Form",
+      "contactFormShort": "Contact Form",
+      "googleAnalytics": "Google Analytics",
+      "advancedSeo": "Extended On-Page SEO",
+      "searchConsoleSetup": "Google Search Console Setup",
+      "searchConsole": "Google Search Console",
+      "blog": "Blog / Article",
+      "performance": "Performance Optimization",
+      "revision": "Revisions",
+      "bugWarranty": "Bug Warranty",
+      "cmsTraining": "CMS Training"
+    },
+    "values": {
+      "maxSections5": "Max. 5",
+      "maxSections8": "Max. 8",
+      "maxSections10": "Max. 10",
+      "maxPages3": "Max. 3",
+      "maxPages56": "Max. 5-6",
+      "maxPages810": "Max. 8-10",
+      "basic": "Basic",
+      "revision1x": "1x",
+      "revision2x": "2x",
+      "revision3x": "3x",
+      "warranty7d": "1x / 7 days",
+      "warranty14d": "2x / 14 days",
+      "warranty30d": "3x / 30 days"
+    }
+  },
+  "footer": {
+    "sloganLine1": "Built Sharp.",
+    "sloganLine2": "Built Fast.",
+    "sloganLine3": "Built to Convert.",
+    "navigationTitle": "Navigation",
+    "contactTitle": "Contact",
+    "copyright": "© {year} Yottabyte",
+    "tagline": "Web development studio"
+  },
+  "whatsapp": {
+    "consultation": "Hi Yottabyte 👋\n\nI'd like a free consultation about a website for my business.",
+    "customProject": "Hi Yottabyte 👋\n\nI'd like to discuss a custom website project for my business.",
+    "packageIntro": "Hi Yottabyte 👋\n\nI'm interested in the {category} {package} package at {price}.",
+    "packageNeedLandingPage": "I'd like to talk about a website for my business.",
+    "packageNeedCompanyProfile": "I'd like to talk about my business website needs."
+  },
+  "error": {
+    "title": "Something went off-script",
+    "description": "We couldn't finish this view. Try again, or head back home.",
+    "globalTitle": "The site hit an unexpected error",
+    "reference": "Reference: {digest}",
+    "retry": "Try again",
+    "backHome": "Back home"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Page not found",
+    "description": "The page you are looking for does not exist or has been moved.",
+    "homeLabel": "Go home",
+    "browseLabel": "Browse pages"
+  },
+  "stack": {
+    "heading": "The stack we ship every day.",
+    "description": "Every project is built on modern, proven web technology — so your website is fast, easy to extend, and safe for the long run.",
+    "primaryCta": "Free Consultation",
+    "secondaryCta": "See Packages",
+    "iconAriaLabels": {
+      "react": "React",
+      "nextjs": "Next.js",
+      "typescript": "TypeScript",
+      "tailwind": "Tailwind CSS",
+      "vercel": "Vercel",
+      "node": "Node.js",
+      "github": "GitHub",
+      "figma": "Figma",
+      "stripe": "Stripe",
+      "sanity": "Sanity"
+    }
+  },
+  "seo": {
+    "appName": "Yottabyte",
+    "title": "Yottabyte — Website Development for Business",
+    "description": "Yottabyte helps small businesses, startups, personal brands, travel companies, and other businesses build landing pages and company profiles that are fast, professional, and designed to drive action.",
+    "ogImageAlt": "Yottabyte, website development services for business",
+    "keywords": [
+      "website development service",
+      "landing page service",
+      "company profile website",
+      "small business website",
+      "business website",
+      "web developer Indonesia"
+    ]
+  },
+  "locale": {
+    "switcherLabel": "Choose language",
+    "id": "Bahasa Indonesia",
+    "en": "English"
+  }
+}

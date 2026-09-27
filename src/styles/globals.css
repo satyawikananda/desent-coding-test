@@ -1,0 +1,192 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #ffffff;
+  --foreground: #332d2f;
+  --card: #ffffff;
+  --card-foreground: #332d2f;
+  --popover: #ffffff;
+  --popover-foreground: #332d2f;
+  --primary: #ff7e5f;
+  /* Dark ink keeps coral controls above WCAG AA contrast. */
+  --primary-foreground: #332d2f;
+  --secondary: #fff6f2;
+  --secondary-foreground: #783a2f;
+  --muted: #f7f5f4;
+  --muted-foreground: #70686a;
+  --accent: #feb47b;
+  --accent-foreground: #332d2f;
+  --destructive: #e63946;
+  --destructive-foreground: #ffffff;
+  --border: #e8e1df;
+  --input: #d9d1cf;
+  --ring: #d94f35;
+  --chart-1: #ff7e5f;
+  --chart-2: #feb47b;
+  --chart-3: #ffcaa7;
+  --chart-4: #ffad8f;
+  --chart-5: #ce6a57;
+  --radius: 0.5rem;
+  --sidebar: #fff6f2;
+  --sidebar-foreground: #332d2f;
+  --sidebar-primary: #ff7e5f;
+  --sidebar-primary-foreground: #332d2f;
+  --sidebar-accent: #feb47b;
+  --sidebar-accent-foreground: #332d2f;
+  --sidebar-border: #e8e1df;
+  --sidebar-ring: #d94f35;
+}
+
+.dark {
+  --background: #2a2024;
+  --foreground: #f2e9e4;
+  --card: #392f35;
+  --card-foreground: #f2e9e4;
+  --popover: #392f35;
+  --popover-foreground: #f2e9e4;
+  --primary: #ff7e5f;
+  --primary-foreground: #2a2024;
+  --secondary: #463a41;
+  --secondary-foreground: #f2e9e4;
+  --muted: #30272c;
+  --muted-foreground: #d7c6bc;
+  --accent: #feb47b;
+  --accent-foreground: #2a2024;
+  --destructive: #e63946;
+  --destructive-foreground: #ffffff;
+  --border: #5d4c55;
+  --input: #5d4c55;
+  --ring: #ff9a80;
+  --chart-1: #ff7e5f;
+  --chart-2: #feb47b;
+  --chart-3: #ffcaa7;
+  --chart-4: #ffad8f;
+  --chart-5: #ce6a57;
+  --sidebar: #2a2024;
+  --sidebar-foreground: #f2e9e4;
+  --sidebar-primary: #ff7e5f;
+  --sidebar-primary-foreground: #2a2024;
+  --sidebar-accent: #feb47b;
+  --sidebar-accent-foreground: #2a2024;
+  --sidebar-border: #5d4c55;
+  --sidebar-ring: #ff9a80;
+}
+
+@theme inline {
+  --font-sans: var(--font-sans);
+  --font-heading: var(--font-heading);
+  --font-mono: var(--font-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply scroll-smooth font-sans;
+  }
+  body {
+    @apply min-h-dvh overflow-x-clip bg-background text-foreground;
+  }
+  :target {
+    scroll-margin-top: 6rem;
+  }
+  :focus-visible {
+    scroll-margin-top: 6rem;
+    scroll-margin-bottom: 2rem;
+  }
+}
+
+@layer components {
+  .yt-tactile {
+    cursor: pointer;
+    transition-property: transform, box-shadow, background-color;
+    transition-duration: 180ms;
+    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .yt-tactile:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0 0 0 var(--foreground);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .yt-tactile:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 5px 5px 0 var(--foreground);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .yt-tactile:hover,
+  .yt-tactile:active {
+    transform: none;
+  }
+}
+
+/*
+ * Continuous rotation keyframe. Used by the stack-feature-section orbit rings.
+ * The `prefers-reduced-motion` block above already neutralizes this for users
+ * who opt out of motion (animation-duration → 0.01ms, iteration-count → 1),
+ * so callers don't need their own motion-reduce handling.
+ */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
