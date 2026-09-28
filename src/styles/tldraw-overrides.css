@@ -1,0 +1,22 @@
+.tldraw__editor {
+  background: transparent;
+}
+
+.tl-container__focused,
+.tl-container {
+  background: transparent;
+}
+
+@keyframes tl-ping {
+  75%,
+	100% {
+		transform: scale(2);
+		opacity: 0;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [style*="tl-ping"] {
+    animation: none !important;
+  }
+}
