@@ -77,14 +77,21 @@ export function useCanvasSync(editor: Editor | null) {
           }
           if (toCreate.length) {
             const center = editor.getViewportPageBounds().center
-            const created = toCreate.map((ci, i) => ({
-              id: createShapeId(),
-              type: PRODUCT_TYPE,
-              x: center.x - 90 + (i % 3) * 60,
-              y: center.y - 60 + Math.floor(i / 3) * 60,
-              props: { productId: ci.productId, doodleId: ci.doodleId, scale: 1 },
-              meta: { instanceId: ci.instanceId },
-            }))
+            // Use cart index (not per-batch i) so single-adds don't stack.
+            const cartIndexByInstance = new Map(
+              cart.map((ci, idx) => [ci.instanceId, idx])
+            )
+            const created = toCreate.map((ci) => {
+              const idx = cartIndexByInstance.get(ci.instanceId) ?? 0
+              return {
+                id: createShapeId(),
+                type: PRODUCT_TYPE,
+                x: center.x - 90 + (idx % 3) * 60,
+                y: center.y - 60 + Math.floor(idx / 3) * 60,
+                props: { productId: ci.productId, doodleId: ci.doodleId, scale: 1 },
+                meta: { instanceId: ci.instanceId },
+              }
+            })
             editor.createShapes(created)
           }
         },
