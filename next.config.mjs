@@ -1,8 +1,3 @@
-import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare"
-import createNextIntlPlugin from 'next-intl/plugin';
-
-const withNextIntl = createNextIntlPlugin('./src/lib/i18n/request.ts');
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   serverExternalPackages: ["takumi-js", "@takumi-rs/core", "@takumi-rs/wasm"],
@@ -15,10 +10,6 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "akcdn.detik.net.id",
-      },
-      {
-        protocol: "https",
         hostname: "raw.githubusercontent.com",
       },
       {
@@ -29,6 +20,4 @@ const nextConfig = {
   },
 }
 
-export default withNextIntl(nextConfig)
-
-initOpenNextCloudflareForDev()
+export default nextConfig
