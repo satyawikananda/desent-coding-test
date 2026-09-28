@@ -119,6 +119,37 @@ Route-local code (anything used by the home page only) lives under
 `src/app/_modules/`. Cross-route primitives live under `src/components`,
 `src/hooks`, and `src/lib`.
 
+## What to improve
+
+A backlog of ideas that would push the studio further, roughly ordered by
+visual payoff first.
+
+- **3D rendering with react-three-fiber** — replace the flat doodle webp's with
+  real GLTF product models rendered on a `<Canvas>`. Orbit camera, soft
+  shadows, baked ambient occlusion. The user could rotate the desk to inspect
+  the back of a chair or the cable management of a desk.
+- **Hybrid 2D / 3D mode** — keep the current fast top-down layout view, but
+  drop into 3D on a per-shape "inspect" gesture. Two shape utils sharing the
+  same cart item, swapping the active renderer based on the zoom level.
+- **Real product photography** — alongside (or instead of) the doodle
+  illustrations, render the catalog `Item.image` directly inside the shape.
+  Closer to what the customer will actually receive.
+- **Saved setups & sharing** — let users name a configuration, save it to a
+  list, and share it as a read-only URL (`/s/{slug}`). The link reconstructs
+  the cart from a small server payload.
+- **Undo / redo for cart operations** — swap, remove, and template apply are
+  destructive. A circular command buffer (or extending the tldraw history
+  scope) would make experimentation less scary.
+- **Reviews and stock status in the swap popover** — show the average rating,
+  review count, and an out-of-stock badge inline next to each variant. The
+  popover already loads the full product; the data is one fetch away.
+- **Better mobile canvas gestures** — pinch-to-zoom, two-finger pan, and
+  long-press for the swap popover instead of relying on hover-only tooltips.
+- **Theming and locale polish** — `next-themes` and `next-intl` are already
+  wired up but only the defaults are used. Ship a proper dark/light visual
+  pass and at least one additional language (Bahasa Indonesia fits the
+  market).
+
 ## License
 
 Released under the [MIT License](LICENSE).
