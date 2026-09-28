@@ -15,6 +15,8 @@ export default function AppCanvas() {
   const [editor, setEditor] = useState<Editor | null>(null)
   useCanvasSync(editor)
 
+  const tlDrawLicenseKey = process.env.NEXT_PUBLIC_TLDRAW_LICENSE_KEY || ""
+
   return (
     <div className="app-canvas relative isolate h-full w-full overflow-hidden bg-background">
       {/* Workspace floor - static analogy backdrop, behind tldraw canvas */}
@@ -35,6 +37,7 @@ export default function AppCanvas() {
         persistenceKey="monis-designer-workspace"
         hideUi
         onMount={(e) => setEditor(e)}
+        licenseKey={tlDrawLicenseKey}
       />
       <CanvasEmptyHint editor={editor} />
       <SwapPopover editor={editor} />
