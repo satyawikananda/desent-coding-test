@@ -44,3 +44,4 @@ cloudflare-env.d.ts
 #graphify
 /graphify-out
 /src/graphify-out/*
+.vercel
