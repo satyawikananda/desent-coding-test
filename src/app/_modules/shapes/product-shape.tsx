@@ -1,6 +1,6 @@
 "use client"
 
-import { useSyncExternalStore } from "react"
+import { useState, useSyncExternalStore } from "react"
 import {
   Editor,
   HTMLContainer,
@@ -109,6 +109,8 @@ function ProductShapeView({
   shape: ProductShape
   editor: Editor
 }) {
+  const [isHovered, setIsHovered] = useState(false)
+
   const doodle = DOODLES_BY_ID[shape.props.doodleId] ?? DOODLES_BY_ID["chair"]!
   const scale = shape.props.scale ?? 1
   const width = doodle.width * scale
@@ -225,11 +227,14 @@ function ProductShapeView({
   return (
     <HTMLContainer
       data-swap-open={isSwapOpen ? "true" : undefined}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       style={{
         width,
         height,
         overflow: "visible",
         pointerEvents: "all",
+        cursor: "pointer",
       }}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -294,17 +299,19 @@ function ProductShapeView({
                     pointerEvents: "auto",
                   }}
                 >
-                  <span
-                    aria-hidden
-                    style={{
-                      position: "absolute",
-                      inset: 2,
-                      borderRadius: 9999,
-                      backgroundColor: "var(--primary)",
-                      opacity: 0.2,
-                      animation: "tl-ping 1.5s cubic-bezier(0,0,0.2,1) infinite",
-                    }}
-                  />
+                  {isHovered ? (
+                    <span
+                      aria-hidden
+                      style={{
+                        position: "absolute",
+                        inset: 2,
+                        borderRadius: 9999,
+                        backgroundColor: "var(--primary)",
+                        opacity: 0.2,
+                        animation: "tl-ping 1.5s cubic-bezier(0,0,0.2,1) infinite",
+                      }}
+                    />
+                  ) : null}
                   <span
                     aria-hidden
                     style={{

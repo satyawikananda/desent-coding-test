@@ -7,6 +7,10 @@
   background: transparent;
 }
 
+.tl-background {
+  background-color: transparent;
+}
+
 @keyframes tl-ping {
   75%,
 	100% {

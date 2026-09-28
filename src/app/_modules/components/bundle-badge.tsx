@@ -1,7 +1,6 @@
 "use client"
 
 import { AnimatePresence, motion } from "motion/react"
-import { PartyPopper } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
@@ -17,13 +16,9 @@ export function BundleBadge({ visible }: { visible: boolean }) {
           transition={{ type: "spring", stiffness: 300, damping: 25 }}
           className={cn(
             "inline-flex items-center gap-1.5 rounded-full bg-primary",
-            "px-3 py-1.5 text-sm font-semibold text-primary-foreground shadow-lg"
+            "px-4 py-2 text-xs font-semibold text-primary-foreground shadow-lg"
           )}
         >
-          <PartyPopper
-            className="h-4 w-4 -rotate-12"
-            strokeWidth={2}
-          />
           Bundle pricing unlocked — save 20%
         </motion.div>
       ) : null}

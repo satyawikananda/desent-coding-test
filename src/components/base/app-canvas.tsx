@@ -17,6 +17,19 @@ export default function AppCanvas() {
 
   return (
     <div className="app-canvas relative isolate h-full w-full overflow-hidden bg-background">
+      {/* Workspace floor - static analogy backdrop, behind tldraw canvas */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-10 flex justify-center"
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/images/doodles/mat-floor.webp"
+          alt=""
+          draggable={false}
+          className="w-full max-w-3xl select-none"
+        />
+      </div>
       <Tldraw
         shapeUtils={PRODUCT_SHAPE_UTILS}
         persistenceKey="monis-designer-workspace"
