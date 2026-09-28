@@ -14,6 +14,22 @@ import { useCartTotals } from "../hooks/use-cart-totals"
 import { useWorkspaceStore } from "../stores/workspace.store"
 import { formatMonthly } from "../utils/helpers"
 
+const MS_PER_DAY = 86_400_000
+
+function addDays(iso: string, days: number): string {
+  return new Date(new Date(iso).getTime() + days * MS_PER_DAY)
+    .toISOString()
+    .slice(0, 10)
+}
+
+function formatDateLong(iso: string): string {
+  return new Date(`${iso}T00:00:00`).toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  })
+}
+
 export function CheckoutModal() {
   const isOpen = useWorkspaceStore((s) => s.isCheckoutOpen)
   const closeCheckout = useWorkspaceStore((s) => s.closeCheckout)
@@ -54,17 +70,32 @@ function CheckoutContent({
   const { items, weekly, monthly, savings, hasBundle } = useCartTotals()
 
   const [setupService, setSetupService] = useState(true)
-  const [deliveryDate, setDeliveryDate] = useState("")
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [address, setAddress] = useState("")
+  const [startDate, setStartDate] = useState("")
+  const [endDate, setEndDate] = useState("")
   const [confirmed, setConfirmed] = useState(false)
 
   const today = new Date().toISOString().slice(0, 10)
+  const endDateMin = startDate ? addDays(startDate, 1) : undefined
+  const canConfirm = Boolean(
+    name.trim() && email.trim() && address.trim() && startDate && endDate
+  )
+
+  const handleStartDateChange = (next: string) => {
+    setStartDate(next)
+    // Clear endDate if it would no longer be valid against the new start.
+    if (endDate && next && endDate <= next) setEndDate("")
+  }
 
   return (
     <AnimatePresence mode="wait">
       {confirmed ? (
         <SuccessView
           key="success"
-          date={deliveryDate}
+          startDate={startDate}
+          endDate={endDate}
           onDone={onDone}
         />
       ) : (
@@ -181,24 +212,102 @@ function CheckoutContent({
               </div>
             </div>
 
-            {/* Delivery */}
-            <div className="space-y-2">
+            {/* Contact */}
+            <div className="space-y-3">
               <p className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
-                Delivery
+                Contact
               </p>
-              <Label htmlFor="delivery-date" className="sr-only">
-                Delivery date
-              </Label>
-              <Input
-                id="delivery-date"
-                type="date"
-                min={today}
-                value={deliveryDate}
-                onChange={(e) => setDeliveryDate(e.target.value)}
-                className="font-mono"
-              />
+              <div className="space-y-2.5">
+                <div className="flex flex-col gap-1.5">
+                  <Label
+                    htmlFor="name"
+                    className="text-xs text-muted-foreground"
+                  >
+                    Full name
+                  </Label>
+                  <Input
+                    id="name"
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    autoComplete="name"
+                  />
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <Label
+                    htmlFor="email"
+                    className="text-xs text-muted-foreground"
+                  >
+                    Email address
+                  </Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    autoComplete="email"
+                  />
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <Label
+                    htmlFor="address"
+                    className="text-xs text-muted-foreground"
+                  >
+                    Delivery address
+                  </Label>
+                  <Input
+                    id="address"
+                    type="text"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                    autoComplete="street-address"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Rental period */}
+            <div className="space-y-3">
+              <p className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
+                Rental period
+              </p>
+              <div className="grid grid-cols-2 gap-2.5">
+                <div className="flex flex-col gap-1.5">
+                  <Label
+                    htmlFor="start-date"
+                    className="text-xs text-muted-foreground"
+                  >
+                    Start rental
+                  </Label>
+                  <Input
+                    id="start-date"
+                    type="date"
+                    min={today}
+                    value={startDate}
+                    onChange={(e) => handleStartDateChange(e.target.value)}
+                    className="font-mono"
+                  />
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <Label
+                    htmlFor="end-date"
+                    className="text-xs text-muted-foreground"
+                  >
+                    End rental
+                  </Label>
+                  <Input
+                    id="end-date"
+                    type="date"
+                    min={endDateMin}
+                    value={endDate}
+                    onChange={(e) => setEndDate(e.target.value)}
+                    disabled={!startDate}
+                    className="font-mono"
+                  />
+                </div>
+              </div>
               <p className="text-xs text-muted-foreground">
-                We&apos;ll deliver to your Bali address.
+                End date must be at least one day after the start date.
               </p>
             </div>
 
@@ -207,7 +316,7 @@ function CheckoutContent({
               size="lg"
               className="w-full"
               onClick={() => setConfirmed(true)}
-              disabled={!deliveryDate}
+              disabled={!canConfirm}
             >
               Confirm rental →
             </Button>
@@ -218,14 +327,19 @@ function CheckoutContent({
   )
 }
 
-function SuccessView({ date, onDone }: { date: string; onDone: () => void }) {
-  const formatted = date
-    ? new Date(`${date}T00:00:00`).toLocaleDateString("en-US", {
-        month: "long",
-        day: "numeric",
-        year: "numeric",
-      })
-    : "your selected date"
+function SuccessView({
+  startDate,
+  endDate,
+  onDone,
+}: {
+  startDate: string
+  endDate: string
+  onDone: () => void
+}) {
+  const range =
+    startDate && endDate
+      ? `${formatDateLong(startDate)} → ${formatDateLong(endDate)}`
+      : formatDateLong(startDate) || "your selected date"
 
   return (
     <motion.div
@@ -241,7 +355,7 @@ function SuccessView({ date, onDone }: { date: string; onDone: () => void }) {
         Your setup is on the way 🌴
       </h2>
       <div className="space-y-1 text-sm text-muted-foreground">
-        <p>We&apos;ll deliver to your Bali address by {formatted}.</p>
+        <p>We&apos;ll deliver to your Bali address for {range}.</p>
         <p>Setup is included.</p>
       </div>
       <p className="pt-2 text-sm italic text-muted-foreground">
